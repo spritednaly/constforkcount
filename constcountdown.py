@@ -54,6 +54,5 @@ def main():
 	print project_id["url"]
 
 if __name__ == "__main__":
-	main() 
-
+	main()
 
