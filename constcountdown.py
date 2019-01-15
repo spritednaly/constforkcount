@@ -11,6 +11,7 @@ import requests
 import json
 import os
 import ast
+import project_id
 from math import *
 from datetime import datetime
 
@@ -50,7 +51,7 @@ def main():
 
 	current_block = get_blocknumber()
 	block_calc(current_block)
-
+	print project_id["url"]
 
 if __name__ == "__main__":
 	main() 
