@@ -3,7 +3,7 @@
 """ 
 Calculate remaining blocks to Constantinople fork
  (1) pull latest block # from Infura api
- (2) countdown block # from 7080000 
+ (2) countdown block # from 7280000 
  (3) output remaining block count
 """
 
@@ -11,7 +11,6 @@ import requests
 import json
 import os
 import ast
-import project_id
 from math import *
 from datetime import datetime
 
@@ -41,17 +40,19 @@ def get_blocknumber():
 
 # Subtract latest block from Constantinople fork
 def block_calc(block_height):
-	# Block 7080000
-	const_block = 7080000 - int(block_height)
-	now=datetime.now()
-	print '%s remaining blocks until Constantinople fork! || %02d/%02d/%04d %02d:%02d:%02d' % (const_block,now.month,now.day,now.year,now.hour,now.minute,now.second)
+	# Block 7280000
+	if block_height <= 7280000:
+		const_block = 7280000 - int(block_height)
+		now=datetime.now()
+		print '%s remaining blocks until Constantinople fork! || %02d/%02d/%04d %02d:%02d:%02d' % (const_block,now.month,now.day,now.year,now.hour,now.minute,now.second)
+	else:
+		print 'Forked!'
 	return const_block
 
 def main():
 
 	current_block = get_blocknumber()
 	block_calc(current_block)
-	print project_id["url"]
 
 if __name__ == "__main__":
 	main()
